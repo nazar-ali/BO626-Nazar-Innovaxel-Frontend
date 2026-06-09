@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useExpenses } from "../../context/useExpenses";
-import { Button } from "../ui/button";
+import { useExpenses } from "../context/useExpenses";
+import { Button } from "../components/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -10,10 +10,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import { Field, FieldGroup } from "../ui/field";
-import { Input } from "../ui/input";
-import { Label } from "../ui/label";
+} from "../components/ui/dialog";
+import { Field, FieldGroup } from "../components/ui/field";
+import { Input } from "../components/ui/input";
+import { Label } from "../components/ui/label";
 import {
   Select,
   SelectTrigger,
@@ -21,7 +21,7 @@ import {
   SelectGroup,
   SelectItem,
   SelectValue,
-} from "../ui/select";
+} from "../components/ui/select";
 
 const categories = [
   "Food",

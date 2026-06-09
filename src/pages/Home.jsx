@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Header from "../component/layout/Header";
-import ExpenseTable from "../component/expenses/Expense";
+import Header from "../components/layout/Header";
+import ExpenseTable from "../components/expenses/Expense";
 function Home() {
 
   return (

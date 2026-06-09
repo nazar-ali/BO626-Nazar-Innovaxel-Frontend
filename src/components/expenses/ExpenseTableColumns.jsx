@@ -12,7 +12,10 @@ const categoryStyles = {
   Other: "bg-gray-100 text-gray-700",
 };
 
-export const columns = [
+export const getColumns = (
+  handleEdit,
+  handleDelete
+) => [
   {
     accessorKey: "title",
     header: "TITLE",
@@ -76,7 +79,9 @@ export const columns = [
         <Button
           variant="outline"
           size="icon"
-          onClick={() => console.log("Edit", row.original)}
+           onClick={() =>
+            handleEdit(row.original)
+          }
         >
           <Pencil className="h-4 w-4" />
         </Button>
@@ -84,7 +89,9 @@ export const columns = [
         <Button
           variant="outline"
           size="icon"
-          onClick={() => console.log("Delete", row.original.id)}
+         onClick={() =>
+            handleDelete(row.original.id)
+          }
         >
           <Trash2 className="h-4 w-4" />
         </Button>

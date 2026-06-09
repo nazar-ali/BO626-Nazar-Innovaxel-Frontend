@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ExpenseFormDialog from "../dialogs/AddExpenseDialog";
+import ExpenseFormDialog from "../../dialogs/AddExpenseDialog";
 
 const Header = ({ onAddExpense }) => {
   const [isScrolled, setIsScrolled] = useState(false);
