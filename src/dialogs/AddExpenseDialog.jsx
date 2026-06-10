@@ -35,6 +35,32 @@ const categories = [
 
 export default function ExpenseFormDailog({ open, onOpenChange }) {
   const { addExpense } = useExpenses();
+const [errors, setErrors] = useState({});
+
+
+const validateForm = () => {
+  const newErrors = {};
+
+  if (!formData.title.trim()) {
+    newErrors.title = "Title is required";
+  }
+
+  if (!formData.amount || Number(formData.amount) <= 0) {
+    newErrors.amount = "Amount must be greater than 0";
+  }
+
+  if (!formData.category) {
+    newErrors.category = "Please select a category";
+  }
+
+  if (!formData.date) {
+    newErrors.date = "Date is required";
+  }
+
+  setErrors(newErrors);
+
+  return Object.keys(newErrors).length === 0;
+};
 
   const [formData, setFormData] = useState({
     title: "",
@@ -51,10 +77,23 @@ export default function ExpenseFormDailog({ open, onOpenChange }) {
       ...prev,
       [name]: value,
     }));
+
+     setErrors((prev) => ({
+    ...prev,
+    [name]: "",
+  }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+     const isValid = validateForm();
+
+  if (!isValid) {
+    toast.error("Please fix the errors before submitting");
+    return;
+  }
+
+    
     console.log("Form Submitted");
     addExpense(formData);
 
@@ -65,6 +104,8 @@ export default function ExpenseFormDailog({ open, onOpenChange }) {
       date: "",
       notes: "",
     });
+
+     setErrors({});
 
     toast.success("Expense added successfully");
     onOpenChange(false);
@@ -110,8 +151,13 @@ export default function ExpenseFormDailog({ open, onOpenChange }) {
                 value={formData.title}
                 onChange={handleChange}
                 placeholder="Dinner with friends"
-                required
+                
               />
+               {errors.title && (
+    <p className="text-sm text-red-500">
+      {errors.title}
+    </p>
+  )}
             </Field>
 
             <Field>
@@ -124,8 +170,13 @@ export default function ExpenseFormDailog({ open, onOpenChange }) {
                 min="0"
                 onChange={handleChange}
                 placeholder="2200"
-                required
+                
               />
+               {errors.amount && (
+    <p className="text-sm text-red-500">
+      {errors.amount}
+    </p>
+  )}
             </Field>
 
             <Field>
@@ -133,12 +184,17 @@ export default function ExpenseFormDailog({ open, onOpenChange }) {
 
               <Select
                 value={formData.category}
-                onValueChange={(value) =>
+                onValueChange={(value) => {
                   setFormData((prev) => ({
                     ...prev,
                     category: value,
-                  }))
-                }
+                  }));
+                    setErrors((prev) => ({
+    ...prev,
+    category: "",
+  }));
+                }}  
+                
               >
                 <SelectTrigger>
                   <SelectValue placeholder="Select a category" />
@@ -154,6 +210,11 @@ export default function ExpenseFormDailog({ open, onOpenChange }) {
                   </SelectGroup>
                 </SelectContent>
               </Select>
+               {errors.category && (
+    <p className="text-sm text-red-500">
+      {errors.category}
+    </p>
+  )}
             </Field>
 
             <Field>
@@ -164,8 +225,13 @@ export default function ExpenseFormDailog({ open, onOpenChange }) {
                 value={formData.date}
                 onChange={handleChange}
                 type="date"
-                required
+                
               />
+                {errors.date && (
+    <p className="text-sm text-red-500">
+      {errors.date}
+    </p>
+  )}
             </Field>
 
             <Field>
@@ -177,6 +243,11 @@ export default function ExpenseFormDailog({ open, onOpenChange }) {
                 onChange={handleChange}
                 placeholder="Optional notes"
               />
+              {errors.notes && (
+    <p className="text-sm text-red-500">
+      {errors.notes}
+    </p>
+  )}  
             </Field>
           </FieldGroup>
 
