@@ -22,6 +22,7 @@ import {
   SelectItem,
   SelectValue,
 } from "../components/ui/select";
+import { toast } from "sonner";
 
 const categories = [
   "Food",
@@ -32,7 +33,7 @@ const categories = [
   "Other",
 ];
 
-export default function ExpenseFormDailog() {
+export default function ExpenseFormDailog({ open, onOpenChange }) {
   const { addExpense } = useExpenses();
 
   const [formData, setFormData] = useState({
@@ -64,9 +65,12 @@ export default function ExpenseFormDailog() {
       date: "",
       notes: "",
     });
+
+    toast.success("Expense added successfully");
+    onOpenChange(false);
   };
   return (
-    <Dialog>
+     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>
         <button className="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-violet-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition-all duration-150 hover:bg-violet-700 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2">
           <svg
@@ -183,7 +187,7 @@ export default function ExpenseFormDailog() {
               </Button>
             </DialogClose>
 
-            <Button className="cursor-pointer" type="submit">
+            <Button  className="bg-blue-600 hover:bg-blue-700 cursor-pointer" type="submit">
               Save Expense
             </Button>
           </DialogFooter>

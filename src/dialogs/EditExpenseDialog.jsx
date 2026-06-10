@@ -121,11 +121,12 @@ export default function EditExpenseDialog({
               type="button"
               variant="outline"
               onClick={() => onOpenChange(false)}
+              className=" hover:bg-gray-200 cursor-pointer"
             >
               Cancel
             </Button>
 
-            <Button type="submit">
+            <Button className="bg-blue-600 hover:bg-blue-700 cursor-pointer" type="submit">
               Update Expense
             </Button>
           </DialogFooter>

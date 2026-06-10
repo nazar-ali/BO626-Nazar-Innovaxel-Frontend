@@ -3,7 +3,7 @@ import ExpenseFormDialog from "../../dialogs/AddExpenseDialog";
 
 const Header = ({ onAddExpense }) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [open, onOpenChange] = useState(false);
   const currentDate = new Date().toLocaleDateString("en-US", {
     month: "long",
     year: "numeric",
@@ -40,7 +40,7 @@ const Header = ({ onAddExpense }) => {
             </div>
           </div>
 
-          <ExpenseFormDialog open={open} setOpen={setOpen} />
+          <ExpenseFormDialog open={open} onOpenChange={onOpenChange} />
         </div>
       </div>
     </header>
