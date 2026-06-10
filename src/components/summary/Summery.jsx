@@ -1,7 +1,7 @@
-import SummeryCards from "./SummeryCards";
+import SummeryCards from "../summary/SummeryCards";
 import { useExpenses } from "../../context/useExpenses";
-import CategoryPieChart from "./CategoryPieChart";
-import MonthlyTrendBarChart from "./MonthlyTrendBarChart";
+import CategoryPieChart from "../summary/CategoryPieChart";
+import MonthlyTrendBarChart from "../summary/MonthlyTrendBarChart";
 
 export default function Summary() {
   const { expenses } = useExpenses();
