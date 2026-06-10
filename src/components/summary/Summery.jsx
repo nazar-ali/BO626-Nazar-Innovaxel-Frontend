@@ -1,6 +1,6 @@
 import SummeryCards from "./SummeryCards";
 import { useExpenses } from "../../context/useExpenses";
-import CategoryPieChart from "./CategoryPiehart";
+import CategoryPieChart from "./CategoryPiechart";
 import MonthlyTrendBarChart from "./MonthlyTrendBarChart";
 
 export default function Summary() {
