@@ -52,7 +52,7 @@ export default function CategoryPieChart({ data }) {
           </ResponsiveContainer>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-3 mt-10 ">
           {data.map((item, index) => (
             <div
               key={item.name}

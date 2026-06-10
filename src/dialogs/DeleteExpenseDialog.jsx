@@ -17,7 +17,7 @@ export default function DeleteExpenseDialog({
 }) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent   className="w-[95vw] max-w-md p-4 sm:p-6 rounded-xl">
         <DialogHeader>
           <div className="flex justify-center">
             <div className="rounded-full bg-red-100 p-3">

@@ -57,7 +57,13 @@ export default function EditExpenseDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent   className="
+    w-[95vw]
+    max-w-md
+    p-4
+    sm:p-6
+    rounded-xl
+  ">
         <form onSubmit={handleSubmit}>
           <DialogHeader>
             <DialogTitle>Edit Expense</DialogTitle>

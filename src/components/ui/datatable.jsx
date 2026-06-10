@@ -81,7 +81,7 @@ export function DataTable({ columns, data }) {
         </TableBody>
       </Table>
     </div>
-     <div calssName="mt-10">
+     <div>
        <DataTablePagination table={table} />
       </div>
        </>

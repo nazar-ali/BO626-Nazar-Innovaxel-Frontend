@@ -35,32 +35,31 @@ const categories = [
 
 export default function ExpenseFormDailog({ open, onOpenChange }) {
   const { addExpense } = useExpenses();
-const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({});
 
+  const validateForm = () => {
+    const newErrors = {};
 
-const validateForm = () => {
-  const newErrors = {};
+    if (!formData.title.trim()) {
+      newErrors.title = "Title is required";
+    }
 
-  if (!formData.title.trim()) {
-    newErrors.title = "Title is required";
-  }
+    if (!formData.amount || Number(formData.amount) <= 0) {
+      newErrors.amount = "Amount must be greater than 0";
+    }
 
-  if (!formData.amount || Number(formData.amount) <= 0) {
-    newErrors.amount = "Amount must be greater than 0";
-  }
+    if (!formData.category) {
+      newErrors.category = "Please select a category";
+    }
 
-  if (!formData.category) {
-    newErrors.category = "Please select a category";
-  }
+    if (!formData.date) {
+      newErrors.date = "Date is required";
+    }
 
-  if (!formData.date) {
-    newErrors.date = "Date is required";
-  }
+    setErrors(newErrors);
 
-  setErrors(newErrors);
-
-  return Object.keys(newErrors).length === 0;
-};
+    return Object.keys(newErrors).length === 0;
+  };
 
   const [formData, setFormData] = useState({
     title: "",
@@ -78,22 +77,21 @@ const validateForm = () => {
       [name]: value,
     }));
 
-     setErrors((prev) => ({
-    ...prev,
-    [name]: "",
-  }));
+    setErrors((prev) => ({
+      ...prev,
+      [name]: "",
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-     const isValid = validateForm();
+    const isValid = validateForm();
 
-  if (!isValid) {
-    toast.error("Please fix the errors before submitting");
-    return;
-  }
+    if (!isValid) {
+      toast.error("Please fix the errors before submitting");
+      return;
+    }
 
-    
     console.log("Form Submitted");
     addExpense(formData);
 
@@ -105,13 +103,13 @@ const validateForm = () => {
       notes: "",
     });
 
-     setErrors({});
+    setErrors({});
 
     toast.success("Expense added successfully");
     onOpenChange(false);
   };
   return (
-     <Dialog open={open} onOpenChange={onOpenChange}>
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>
         <button className="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-violet-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition-all duration-150 hover:bg-violet-700 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2">
           <svg
@@ -131,7 +129,15 @@ const validateForm = () => {
         </button>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-md ">
+      <DialogContent
+        className="
+    w-[95vw]
+    max-w-md
+    p-4
+    sm:p-6
+    rounded-xl
+  "
+      >
         <form onSubmit={handleSubmit}>
           <DialogHeader>
             <DialogTitle className="text-xl font-bold">
@@ -151,13 +157,10 @@ const validateForm = () => {
                 value={formData.title}
                 onChange={handleChange}
                 placeholder="Dinner with friends"
-                
               />
-               {errors.title && (
-    <p className="text-sm text-red-500">
-      {errors.title}
-    </p>
-  )}
+              {errors.title && (
+                <p className="text-sm text-red-500">{errors.title}</p>
+              )}
             </Field>
 
             <Field>
@@ -170,13 +173,10 @@ const validateForm = () => {
                 min="0"
                 onChange={handleChange}
                 placeholder="2200"
-                
               />
-               {errors.amount && (
-    <p className="text-sm text-red-500">
-      {errors.amount}
-    </p>
-  )}
+              {errors.amount && (
+                <p className="text-sm text-red-500">{errors.amount}</p>
+              )}
             </Field>
 
             <Field>
@@ -189,12 +189,11 @@ const validateForm = () => {
                     ...prev,
                     category: value,
                   }));
-                    setErrors((prev) => ({
-    ...prev,
-    category: "",
-  }));
-                }}  
-                
+                  setErrors((prev) => ({
+                    ...prev,
+                    category: "",
+                  }));
+                }}
               >
                 <SelectTrigger>
                   <SelectValue placeholder="Select a category" />
@@ -210,11 +209,9 @@ const validateForm = () => {
                   </SelectGroup>
                 </SelectContent>
               </Select>
-               {errors.category && (
-    <p className="text-sm text-red-500">
-      {errors.category}
-    </p>
-  )}
+              {errors.category && (
+                <p className="text-sm text-red-500">{errors.category}</p>
+              )}
             </Field>
 
             <Field>
@@ -225,13 +222,10 @@ const validateForm = () => {
                 value={formData.date}
                 onChange={handleChange}
                 type="date"
-                
               />
-                {errors.date && (
-    <p className="text-sm text-red-500">
-      {errors.date}
-    </p>
-  )}
+              {errors.date && (
+                <p className="text-sm text-red-500">{errors.date}</p>
+              )}
             </Field>
 
             <Field>
@@ -244,10 +238,8 @@ const validateForm = () => {
                 placeholder="Optional notes"
               />
               {errors.notes && (
-    <p className="text-sm text-red-500">
-      {errors.notes}
-    </p>
-  )}  
+                <p className="text-sm text-red-500">{errors.notes}</p>
+              )}
             </Field>
           </FieldGroup>
 
@@ -258,7 +250,10 @@ const validateForm = () => {
               </Button>
             </DialogClose>
 
-            <Button  className="bg-blue-600 hover:bg-blue-700 cursor-pointer" type="submit">
+            <Button
+              className="bg-blue-600 hover:bg-blue-700 cursor-pointer"
+              type="submit"
+            >
               Save Expense
             </Button>
           </DialogFooter>

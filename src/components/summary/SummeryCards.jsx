@@ -5,6 +5,14 @@ import {
   Calculator,
 } from "lucide-react";
 
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "@/components/ui/card";
+
 export default function SummeryCards({
   totalSpent,
   totalTransactions,
@@ -46,25 +54,25 @@ export default function SummeryCards({
         const Icon = card.icon;
 
         return (
-          <div
-            key={card.title}
-            className="rounded-2xl border bg-white p-5 shadow-sm"
-          >
-            <div className="mb-4 flex items-center gap-2 text-gray-600">
-              <Icon className="h-4 w-4" />
-              <span className="text-sm font-medium">
+          <Card className="w-full max-w-full" key={card.title}>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
+                <Icon className="h-4 w-4" />
                 {card.title}
-              </span>
-            </div>
+              </CardTitle>
 
-            <h2 className="text-4xl font-bold tracking-tight">
-              {card.value}
-            </h2>
+             
+            </CardHeader>
 
-            <p className="mt-2 text-sm text-muted-foreground">
-              {card.subtitle}
-            </p>
-          </div>
+            <CardContent>
+              <h2 className="text-2xl font-bold tracking-tight">
+                {card.value}
+              </h2>
+            </CardContent>
+             <CardDescription className="px-4 pt-2 text-sm">
+                {card.subtitle}
+              </CardDescription>
+          </Card>
         );
       })}
     </div>
