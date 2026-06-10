@@ -82,6 +82,7 @@ export const getColumns = (
            onClick={() =>
             handleEdit(row.original)
           }
+          className="text-blue-600 cursor-pointer hover:bg-blue-100"
         >
           <Pencil className="h-4 w-4" />
         </Button>
@@ -89,6 +90,7 @@ export const getColumns = (
         <Button
           variant="outline"
           size="icon"
+          className="text-red-600 cursor-pointer hover:bg-red-100"
          onClick={() =>
             handleDelete(row.original.id)
           }

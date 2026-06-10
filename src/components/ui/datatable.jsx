@@ -3,6 +3,7 @@
 import {
   flexRender,
   getCoreRowModel,
+  getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 
@@ -14,15 +15,20 @@ import {
   TableHeader,
   TableRow,
 } from "./table";
+import { Button } from "./button";
+import { DataTablePagination } from "./pagination";
 
 export function DataTable({ columns, data }) {
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
   });
 
   return (
+    <>
+   
     <div className="overflow-hidden  rounded-xl border bg-white">
       <Table>
         <TableHeader className="bg-muted/30">
@@ -75,5 +81,9 @@ export function DataTable({ columns, data }) {
         </TableBody>
       </Table>
     </div>
+     <div calssName="mt-10">
+       <DataTablePagination table={table} />
+      </div>
+       </>
   );
 }

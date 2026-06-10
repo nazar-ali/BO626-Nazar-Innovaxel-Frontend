@@ -30,7 +30,7 @@ export default function MonthlyTrendBarChart({
             <Tooltip />
             <Bar
               dataKey="amount"
-              fill="#40b7e6"
+              fill="#1786f5e6"
               radius={[6, 6, 0, 0]}
             />
           </BarChart>
