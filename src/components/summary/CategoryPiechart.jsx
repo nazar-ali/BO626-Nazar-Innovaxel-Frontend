@@ -75,9 +75,9 @@ export default function CategoryPieChart({ data }) {
             </div>
           ))}
 
-          <div className="pt-4 font-bold">
+          {/* <div className="pt-4 font-bold">
             Total: ${total}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
