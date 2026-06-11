@@ -1,16 +1,49 @@
-# React + Vite
+# Personal Expense Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and responsive Personal Expense Tracker built with React, Vite, Tailwind CSS, ShadCN UI, and Context API. The application helps users track their daily expenses, manage spending records, and visualize financial data through interactive charts and analytics.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* Add, edit, and delete expenses
+* Persistent data storage using Local Storage
+* Category-based expense management
+* Date filtering for expense records
+* Responsive data table with pagination
+* Interactive summary dashboard
+* Total spending analytics
+* Top spending category insights
+* Daily average expense calculation
+* Category breakdown pie chart
+* Monthly spending trend bar chart
+* Toast notifications for user actions
+* Form validation using Zod
+* Mobile-friendly responsive design
+* Empty state handling for new users
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* React.js
+* Vite
+* Tailwind CSS
+* ShadCN UI
+* Context API
+* TanStack Table
+* Recharts
+* Sonner Toast
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+npm run dev
+```
+
+## Build for Production
+
+```bash
+npm run build
+```
+
+## Project Goal
+
+The goal of this project is to provide users with a simple and intuitive way to monitor expenses, analyze spending habits, and gain insights through visual reports and statistics.
