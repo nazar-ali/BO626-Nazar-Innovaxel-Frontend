@@ -22,15 +22,15 @@ import {
 export function DataTablePagination({ table }) {
   return (
     <div className="flex flex-col gap-4 px-2 py-3 sm:flex-row sm:items-center sm:justify-between">
-      {/* Selected Rows */}
+     
       <div className="text-center text-sm text-muted-foreground sm:text-left">
         {table.getFilteredSelectedRowModel().rows.length} of{" "}
         {table.getFilteredRowModel().rows.length} row(s) selected.
       </div>
 
-      {/* Controls */}
+      
       <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-6">
-        {/* Rows Per Page */}
+        
         <div className="flex items-center gap-2">
           <p className="text-sm font-medium whitespace-nowrap">
             Rows per page
@@ -59,13 +59,13 @@ export function DataTablePagination({ table }) {
           </Select>
         </div>
 
-        {/* Page Info */}
+        
         <div className="text-sm font-medium">
           Page {table.getState().pagination.pageIndex + 1} of{" "}
           {table.getPageCount()}
         </div>
 
-        {/* Navigation */}
+       
         <div className="flex items-center gap-2">
           <Button
             variant="outline"
